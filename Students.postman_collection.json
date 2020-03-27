@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "abca1486-7b09-414d-b3b7-e779fbd151a6",
+		"name": "Students",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "student name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "01436403-4072-49f0-8d85-ac0ea9db404e",
+						"exec": [
+							"pm.test(\"Validate student name\", function(){",
+							"    var response = pm.response.json();",
+							"    pm.expect(response.student.name).to.eql(\"dev1\");",
+							"    ",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "student info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/student?id=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"student"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example1",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/student?id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"student"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self'"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "146"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 15 Mar 2020 19:44:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>Cannot GET /student</pre>\n    </body>\n</html>"
+				}
+			]
+		},
+		{
+			"name": "student id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"student\": [\r\n      {\r\n        \"id\": 200,\r\n        \"local_id\": 3,\r\n        \"student_username\": \"ag1student1\",\r\n        \"name\": {\r\n          \"first_name\": \"Brandon\",\r\n          \"last_name\": \"Adair\"\r\n        },\r\n        \"demographics\": {\r\n          \"gender\": \"M\",\r\n          \"birth_date\": \"1998-12-13\",\r\n          \"projected_graduation_year\": 2016\r\n        },\r\n        \"addresses\": {\r\n          \"physical\": {\r\n            \"street\": \"1337 Greymont Ave\",\r\n            \"city\": \"Jackson\",\r\n            \"state_province\": \"MS\",\r\n            \"postal_code\": 39202\r\n          },\r\n          \"mailing\": {\r\n            \"street\": \"1337 Greymont Ave\",\r\n            \"city\": \"Jackson\",\r\n            \"state_province\": \"MS\",\r\n            \"postal_code\": 39202\r\n          }\r\n        },\r\n        \"alerts\": {\r\n          \"legal\": {\r\n            \"description\": \"Divorced parents only mom should pick up\",\r\n            \"expires_date\": \"NEVER_EXPIRES\"\r\n          },\r\n          \"discipline\": {\r\n            \"description\": \"Fighting is a problem\",\r\n            \"expires_date\": \"NEVER_EXPIRES\"\r\n          },\r\n          \"medical\": {\r\n            \"description\": \"Allergic to peanuts\",\r\n            \"expires_date\": \"NEVER_EXPIRES\"\r\n          },\r\n          \"other\": {\r\n            \"description\": \"Brandon needs to go to study hall during 3rd period.\",\r\n            \"expires_date\": \"NEVER_EXPIRES\"\r\n          }\r\n        },\r\n        \"phones\": {\r\n          \"main\": {\r\n            \"number\": \"1-555-555-3612\"\r\n          }\r\n        },\r\n        \"school_enrollment\": {\r\n          \"enroll_status\": \"A\",\r\n          \"enroll_status_description\": \"Active\",\r\n          \"enroll_status_code\": 0,\r\n          \"grade_level\": 12,\r\n          \"entry_date\": \"2015-05-25\",\r\n          \"exit_date\": \"2016-05-22\",\r\n          \"school_number\": 100,\r\n          \"school_id\": 3,\r\n          \"entry_code\": \"A1\",\r\n          \"entry_comment\": \"promoted\",\r\n          \"track\": \"A\",\r\n          \"full_time_equivalency\": {\r\n            \"fteid\": 854,\r\n            \"name\": \"Full Time\"\r\n          }\r\n        },\r\n        \"ethnicity_race\": {\r\n          \"scheduling_reporting_ethnicity\": \"B\"\r\n        },\r\n        \"contact\": {\r\n          \"emergency_contact_name1\": \"Jonathan Mccarthy\",\r\n          \"emergency_phone1\": \"1-555-555-6049\",\r\n          \"emergency_phone2\": \"1-555-555-2202\",\r\n          \"guardian_email\": \"example217457@marketvolt.com\",\r\n          \"mother\": \"Willima Adair\",\r\n          \"father\": \"Adam Adair\",\r\n          \"doctor_name\": \"Dr. Tom Smith\",\r\n          \"doctor_phone\": \"1-555-555-2035\"\r\n        },\r\n        \"contact_info\": {\r\n          \"email\": \"Brandon.Adair@powerschool.com\"\r\n        }\r\n      }"
+				},
+				"url": {
+					"raw": "http://localhost:3000/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test asserstion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "01436403-4072-49f0-8d85-ac0ea9db404e",
+						"exec": [
+							"pm.test(\"Validate student name\", function(){",
+							"    var response = pm.response.json();",
+							"    pm.expect(response.student.name).to.eql(\"dev1\");",
+							"    ",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"student"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "31ce962c-4860-43f4-95b9-c794b1c72fb0",
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"kem cho\")"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "86fad079-d830-4025-bd00-2b82358342f3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "b2de147e-5812-48b6-a7da-550b3f5a7c46",
+			"key": "url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
